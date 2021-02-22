@@ -62,6 +62,8 @@ public class SearchStepDefinitions {
     @FindBy(xpath="//div[contains(@id,'searchResultsList')]//div[contains(@class,'resultWrapper')]")
     List<WebElement> searchResult;
 
+    String bkOrigin ="";
+    String bkDestination = "";
 
     @Given("^user is already on Kayak flights page$")
     public void user_is_already_on_Kayak_flights_page() throws Exception {
@@ -76,6 +78,8 @@ public class SearchStepDefinitions {
     public void user_enters_and_and_and_and_user_clicks_on_search(String origin, String destination, String startDate, String returnDate) throws Exception {
         oSelutil.waitExplicitly(5,eorigin,driverWeb);
         eorigin.click();
+        bkOrigin = origin;
+        bkDestination = destination;
         origin = "" + Keys.BACK_SPACE + Keys.BACK_SPACE + origin;
         destination = "" + Keys.BACK_SPACE + Keys.BACK_SPACE + destination;
         eorigin.sendKeys(origin);
@@ -138,7 +142,11 @@ public class SearchStepDefinitions {
         }
 
 //        printAllDestination(numToDestination);
-        System.out.println("Print 5th Origin and Destination : " + numToDestination.get(Integer.parseInt(nthResult)));
+        Itinerary nthItinerary = numToDestination.get(Integer.parseInt(nthResult));
+        log.info("Print 5th Origin and Destination : " + nthItinerary);
+        oSelutil.verifyText(nthItinerary.getOrigin(), bkOrigin, "Origin verified" );
+        oSelutil.verifyText(nthItinerary.getDestination(), bkDestination, "Destination verified" );
+
     }
 
 

@@ -57,8 +57,8 @@ public class SeliniumUtility {
     }
 
     public void verifyText(String actualText, String destn, String msg) throws IOException {
-
         Assert.assertEquals(actualText,destn);
+        log.info(msg);
     } 
 
 

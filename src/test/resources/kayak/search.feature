@@ -12,4 +12,5 @@ Feature: Search Flights
 
     Examples:
       | origin | destination | startdate | returndate | n |
-      | San Francisco | Las Vegas | 05/08/2021 | 08/08/2021| 4 |
+      | San Francisco | Las Vegas McCarran | 05/08/2021 | 08/08/2021| 4 |
+      | San Francisco | San Diego | 04/08/2021 | 07/08/2021| 3 |
